@@ -1,4 +1,5 @@
 --Made by Jayy#6265
+--preview https://youtu.be/ZxMXoLpdIwY
 --Open source is simply better
 
 local RunService = game:GetService("RunService")
