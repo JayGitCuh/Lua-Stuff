@@ -1,3 +1,6 @@
+--Made by Jayy#6265
+--Open source is simply better
+
 local RunService = game:GetService("RunService")
 local HttpService = game:GetService("HttpService")
 local TweenService = game:GetService("TweenService")
@@ -61,7 +64,6 @@ function Library:CreateMain(Bigtext, bottomsmall, color, visiblekey)
 	local TOP = Instance.new("Frame")
 	local NAME = Instance.new("TextLabel")
 	local VERSION = Instance.new("TextLabel")
-	--local PLAYERS = Instance.new("TextLabel")
 	local TopLine = Instance.new("Frame")
 
 	MakeDraggable(TOP, MenuBG)
@@ -143,21 +145,6 @@ function Library:CreateMain(Bigtext, bottomsmall, color, visiblekey)
 	VERSION.TextColor3 = Color3.fromRGB(255, 255, 255)
 	VERSION.TextSize = 16.000
 
-	--[[
-
-	PLAYERS.Name = "PLAYERS"
-	PLAYERS.Parent = TOP
-	PLAYERS.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	PLAYERS.BackgroundTransparency = 1.000
-	PLAYERS.Position = UDim2.new(0.715994, 0, 0.477611929, 0)
-	PLAYERS.Size = UDim2.new(0, 190, 0, 35)
-	PLAYERS.Font = Enum.Font.GothamSemibold
-	PLAYERS.Text = smallbottomright
-	PLAYERS.TextColor3 = Color3.fromRGB(255, 255, 255)
-	PLAYERS.TextSize = 16.000
-
-	]]
-
 	TopLine.Name = "TopLine"
 	TopLine.Parent = TOP
 	TopLine.BackgroundColor3 = menuColor
@@ -197,11 +184,11 @@ function Library:CreateMain(Bigtext, bottomsmall, color, visiblekey)
 	OverlayContainer.Position = UDim2.new(0.840267479, 0, 0.0175925922, 0)
 	OverlayContainer.Size = UDim2.new(0, 198, 0, 1061)
 
-	function Library:DestroyMenu()
+	function Library:DestroyMenu() -- Force destroys the menu
 		Lurid:Destroy()
 	end	
 
-	function Library:CreateRightSolidOverlay(text)
+	function Library:CreateRightSolidOverlay(text) --overlay (no need to comment cuz its just a bigass label)
 		local Info = Instance.new("Frame")
 		local UIGridLayout = Instance.new("UIGridLayout")
 		local Folder = Instance.new("Folder")
@@ -266,8 +253,8 @@ function Library:CreateMain(Bigtext, bottomsmall, color, visiblekey)
 
 	local InsideLibrary = {}
 
-	function InsideLibrary:CreateTab(text, size)
-		size = size or 65
+	function InsideLibrary:CreateTab(text, size) --makes a tab
+		size = size or 65 --original and customizable size if the text is to big
 
 		print("UI Made by Jayy#6265")
 		local TabButton = Instance.new("TextButton")
@@ -309,7 +296,7 @@ function Library:CreateMain(Bigtext, bottomsmall, color, visiblekey)
 		--TabTopLine.AutomaticSize = Enum.AutomaticSize.X
 		TabTopLine.ClipsDescendants = false
 
-		local SectorFolder = Instance.new("Folder")
+		local SectorFolder = Instance.new("Folder") --dont touch the folders unless you know what your doing
 
 		SectorFolder.Name = "SectorFolder"
 		SectorFolder.Parent = TabContainer
@@ -849,3 +836,38 @@ function Library:CreateMain(Bigtext, bottomsmall, color, visiblekey)
 	return InsideLibrary
 end
 
+local dwLocalPlayer = game.Players.LocalPlayer
+local dwCamera = game.Workspace.CurrentCamera
+
+local MainBase = Library:CreateMain("Title", "Small Title", Color3.new(0,0,255), Enum.KeyCode.F4) --Title, Bottom Title, Color, Toggle Key (Changeable)
+
+local Tab1 = MainBase:CreateTab("Tab 1") -- Tab name, Tab frame size (the ghetto resize lol leave blank if the text isnt fucking huge)
+
+local Tab2 = MainBase:CreateTab("TAB NUMBER 2", 120) -- demonstrating that the tab can be resized using autist methods
+
+local t1Section = Tab1:CreateSection("Section 1") -- just text
+
+t1Section:CreateButton("Destroy Base",function() --tbh idk if this works but you could write your own destroy function its not hard
+	Library:DestroyMenu()
+end)
+
+local FOVSlider = t1Section:CreateSlider("Field of view",70, 120,function(t) -- Name, min number, max number (adding floats later cuz this version lowkey outdated but it works)
+	dwCamera.FieldOfView = t
+end)
+FOVSlider:Set(70) -- sets the number (useful for people that want to implement configs aka the reason i added it)
+
+local jumpToggle = t1Section:CreateCheckbox("Super Jump",function(t)
+	print(t)
+	if t == true then -- ik just use a function well fuck you im tired this is rushed
+		dwLocalPlayer.Character.Humanoid.JumpPower = 100
+	elseif t == false then
+		dwLocalPlayer.Character.Humanoid.JumpPower = 50
+	end 
+end)
+jumpToggle:Set(false)
+
+t1Section:CreateDropdown("Dropdown", {"Jay","Is", "So", "Smart"},function(t) -- name, then the list of what you want to be in the dropdown
+	print(t)
+end)
+
+t1Section:CreateLabel("no clue when i added this")
