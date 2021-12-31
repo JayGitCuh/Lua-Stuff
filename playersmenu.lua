@@ -589,19 +589,19 @@ local PlayerInfo = RunService.RenderStepped:Connect(function(frame)
 
     for i, v in ipairs(game.Players:GetChildren()) do
 		if v.Name == selectedplr then
-            game:GetService("CoreGui").Lurid.PlayersBG.InfoContainer["Username:"].Text = "Username: "..game.Players:FindFirstChild(selectedplr).Name
-            game:GetService("CoreGui").Lurid.PlayersBG.InfoContainer["Nickname:"].Text = "Nickname: "..game.Players:FindFirstChild(selectedplr).DisplayName
-            game:GetService("CoreGui").Lurid.PlayersBG.InfoContainer["UserID:"].Text = "UserID: "..game.Players:FindFirstChild(selectedplr).UserId
+            game:GetService("CoreGui").Universal.PlayersBG.InfoContainer["Username:"].Text = "Username: "..game.Players:FindFirstChild(selectedplr).Name
+            game:GetService("CoreGui").Universal.PlayersBG.InfoContainer["Nickname:"].Text = "Nickname: "..game.Players:FindFirstChild(selectedplr).DisplayName
+            game:GetService("CoreGui").Universal.PlayersBG.InfoContainer["UserID:"].Text = "UserID: "..game.Players:FindFirstChild(selectedplr).UserId
             for i, v in pairs(game.Players:FindFirstChild(selectedplr).Character:GetChildren()) do
                 if v.Name == "HumanoidRootPart" then
 
-                    game:GetService("CoreGui").Lurid.PlayersBG.InfoContainer["Position:"].Text = "Position: "..tostring(game.Players:FindFirstChild(selectedplr).Character.HumanoidRootPart.Position)
+                    game:GetService("CoreGui").Universal.PlayersBG.InfoContainer["Position:"].Text = "Position: "..tostring(game.Players:FindFirstChild(selectedplr).Character.HumanoidRootPart.Position)
 
                 end
 
                 if v.Name == "Humanoid" then
 
-                    game:GetService("CoreGui").Lurid.PlayersBG.InfoContainer["Angle:"].Text = "Angle: "..tostring(game.Players:FindFirstChild(selectedplr).Character.Humanoid.MoveDirection)
+                    game:GetService("CoreGui").Universal.PlayersBG.InfoContainer["Angle:"].Text = "Angle: "..tostring(game.Players:FindFirstChild(selectedplr).Character.Humanoid.MoveDirection)
                     
                 end
             end
